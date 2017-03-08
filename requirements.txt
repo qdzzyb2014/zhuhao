@@ -1,0 +1,13 @@
+# Flask
+Flask==0.12
+Flask-SQLAlchemy==2.1
+SQLAlchemy==1.1.1
+Flask-Migrate==2.0.0
+Flask-WTF==0.12
+WTForms==2.1
+WTForms-JSON==0.2.10
+Flask-Login==0.3.2
+Flask-Admin==1.4.2
+
+# WSGI
+uwsgi==2.0.14

@@ -1,0 +1,8 @@
+[zhuhao]
+104.224.161.173:27957
+
+[zhuhao:vars]
+ansible_password=wlj199272
+
+[live:children]
+zhuhao

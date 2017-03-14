@@ -1,0 +1,20 @@
+---
+apt_packages:
+  - nginx
+  - postgresql-server-dev-9.3
+  - postgresql-client-9.3
+  - python3-pip
+  - python3-dev
+  - ruby
+  - redis-server
+  - rabbitmq-server
+  - libtiff5-dev
+  - libjpeg8-dev
+  - zlib1g-dev
+  - libfreetype6-dev
+  - libffi-dev
+  - git
+  - ntp
+  - sysstat
+apt_upgrade: no
+repo_force_update: no

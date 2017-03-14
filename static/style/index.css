@@ -1,0 +1,41 @@
+.header {
+    background-color: #c68c1e;
+}
+
+.header .title {
+    margin: 0 10px;
+}
+
+.header .title .text-header {
+    margin: 0 5px 5px 5px;
+}
+
+.header .title .text-footer {
+    margin: 0 5px;
+}
+
+.footer {
+    padding: 10px 15px;
+    background-color: #fcb42e;
+}
+
+.footer .wrapper {
+    background-color: #fcec7b;
+}
+
+.footer .wrapper .form-title {
+    color: red;
+}
+
+.footer .wrapper .form p {
+    margin: 5px;
+    width: 30%;
+}
+
+.footer .wrapper .form .submit {
+    display: block;
+}
+
+.error {
+    display: block;
+}

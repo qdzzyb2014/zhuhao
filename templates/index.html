@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>这个春糖,来糖烟酒周刊就够了!8大峰会,各领风骚</title>
+    <link rel="stylesheet" href="/static/style/index.css?q=114aad780">
+</head>
+<body style="margin: 0;">
+    <div class="header">
+        <div class="title">
+            <div class="text-header">这个春糖,来糖烟酒周刊就够了!8大峰会,各领风骚:<br></div>
+            <div class="text-footer">主题荟萃: 超级单品囊括行业高度,新品盛典网尽天下新品,思想峰会荟萃顶级智库,
+                     商业家为酒商代言,论道中国给你下一个葡萄酒发展的风口<br>
+            大咖荟萃: 正一堂杨光,智达天下张学军,商源朱跃明,陕酒男神王延安......</div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wrapper">
+            <div class="form-title">千人免费论坛,火热抢座中!(填写资料报名, 拒绝空降!)</div>
+            <div class="form">
+                <form action="" method="post" name="register">
+                    {{ form.hidden_tag() }}
+                    {{ form.csrf_token }}
+                    <p>姓名:</p>
+                    {{ form.name(size=35) }}
+                    {% for error in form.errors.name %}
+                        <span class="error" style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                    <p>公司名称:</p>
+                    {{ form.company_name(size=35) }}
+                    {% for error in form.errors.name %}
+                        <span class="error" style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                    <p>职称:</p>
+                    {{ form.position(size=35) }}
+                    <p>联系方式:</p>
+                    {{ form.mobile(size=35) }}
+                    {% for error in form.errors.name %}
+                        <span class="error" style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                    <p>主营产业</p>
+                    {{ form.main_industry(size=35) }}
+                    {% for error in form.errors.name %}
+                        <span class="error" style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                    <input class="submit" type="submit" value="提交">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

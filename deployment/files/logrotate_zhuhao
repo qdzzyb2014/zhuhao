@@ -1,0 +1,8 @@
+/var/log/zhuhao/*.log {
+    daily
+    missingok
+    compress
+    notifempty
+    nocreate
+    rotate 1000
+}

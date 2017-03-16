@@ -4,3 +4,5 @@ venv/
 
 __pycache__
 *.pyc
+
+*/locale_config.py

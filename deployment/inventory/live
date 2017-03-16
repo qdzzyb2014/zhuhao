@@ -1,5 +1,5 @@
 [zhuhao]
-104.224.161.173:27957
+104.224.161.173:26641
 
 [zhuhao:vars]
 ansible_password=wlj199272

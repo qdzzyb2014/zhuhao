@@ -16,5 +16,13 @@ apt_packages:
   - git
   - ntp
   - sysstat
+zhuhao_home: /home/zhuhao
+source_home: "{{ zhuhao_home }}/zhu-hao"
 apt_upgrade: no
 repo_force_update: no
+venv: "{{ zhuhao_home }}/venv"
+
+DB_USER: zhuhao
+DB_PASSWORD: wlj199272
+DB_HOST: 127.0.0.1
+DB_DBNAME: zhuhao

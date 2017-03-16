@@ -1,5 +1,9 @@
 - hosts: all
   become: yes
+  vars:
+    upstart_services:
+      - name: zhuhao-web
+        command: "{{ venv }}/bin/uwsgi --wsgi autoapp -s 127.0.0.1:8090 --buffer-size 8192 --lazy-apps --cheaper 2 --processes 12 --master --lazy --check-interval 1"
   tasks:
     - name: update packages to latest version
       apt: upgrade=dist update_cache=yes
@@ -8,3 +12,57 @@
       apt: name={{ item }}
       with_items:
         - "{{ apt_packages }}"
+
+    - name: create running user
+      user: name=zhuhao
+
+    - name: ensure log directory exists
+      file: path=/var/log/zhuhao state=directory owner=zhuhao
+
+    - name: logrotate configuration
+      copy: src=files/logrotate_zhuhao dest=/etc/logrotate.d/zhuhao
+
+    - name: set github deploy key permission
+      template: src={{ item }} dest=/tmp/ mode=0600
+      with_fileglob:
+        - "files/github/*"
+
+    - name: fetch latest code
+      git: repo=git@github.com:qdzzyb2014/zhuhao.git
+        dest={{ source_home }} key_file=/tmp/github_rsa recursive=no
+        accept_hostkey=yes force={{ repo_force_update }}
+
+    - name: update source code permission
+      file: path={{ source_home }} owner=zhuhao group=zhuhao recurse=yes
+
+    - name: ensure virtualenv exists
+      pip: name=virtualenv executable=pip3
+
+    - name: ensure virtualenv for zhuhao exists
+      pip: name=flask virtualenv={{ venv }}
+      become: true
+      become_user: zhuhao
+
+#    - name: install new pip
+#      shell: virtualenv={{ venv }} pip install -U pip setuptools
+
+    - name: ensure pip config directory exists
+      file: path=/root/.pip state=directory
+
+    - name: setup pip mirror
+      template: src=files/pip.conf dest=/root/.pip/pip.conf
+
+    - name: install pip requirements
+      pip: virtualenv={{ venv }} requirements={{ source_home }}/requirements.txt
+
+    - name: set flask env
+      shell: "echo $FLASK_APP"
+      environment:
+        FLASK_APP: "{{ source_home }}/autoapp.py"
+
+    - name: migrate database
+      shell: "export LC_ALL=en_US.UTF-8; FLASK_APP={{ source_home }}/autoapp.py {{ venv }}/bin/flask db upgrade head"
+      args:
+        chdir: "{{ source_home }}"
+      become: true
+      become_user: zhuhao

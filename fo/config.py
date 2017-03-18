@@ -1,4 +1,3 @@
-import os
 
 DEBUG = True
 SECRET_KEY = 'zhuhaowoerzi'
@@ -13,5 +12,5 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 try:
     from .locale_config import *
-except ImportError:
+except:
     pass

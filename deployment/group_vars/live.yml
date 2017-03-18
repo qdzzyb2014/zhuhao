@@ -1,28 +1,49 @@
 ---
 apt_packages:
   - nginx
-  - postgresql-server-dev-9.3
-  - postgresql-client-9.3
   - python3-pip
   - python3-dev
-  - ruby
-  - redis-server
-  - rabbitmq-server
   - libtiff5-dev
   - libjpeg8-dev
   - zlib1g-dev
   - libfreetype6-dev
   - libffi-dev
-  - git
   - ntp
   - sysstat
 zhuhao_home: /home/zhuhao
 source_home: "{{ zhuhao_home }}/zhu-hao"
 apt_upgrade: no
-repo_force_update: no
-venv: "{{ zhuhao_home }}/venv"
+repo_force_update: yes
+venv: "{{ source_home }}/venv"
 
 DB_USER: zhuhao
 DB_PASSWORD: wlj199272
 DB_HOST: 127.0.0.1
 DB_DBNAME: zhuhao
+
+nginx_ppa_use: true
+nginx_ppa_version: stable
+
+postgresql_admin_user: "postgres"
+postgresql_default_auth_method: "trust"
+postgresql_cluster_name: "main"
+postgresql_cluster_reset: false
+postgresql_databases:
+  - name: zhuhao
+    owner: root      # optional; specify the owner of the database
+postgresql_users:
+  - name: root
+    pass: pass
+    encrypted: no
+  - name: zhuhao
+    pass: pass
+    encrypted: no
+postgresql_user_privileges:
+  - name: zhuhao                  # user name
+    db: zhuhao                 # database
+    priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
+    role_attr_flags: "CREATEDB"
+  - name: root                  # user name
+    db: zhuhao                  # database
+    priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
+    role_attr_flags: "CREATEDB"

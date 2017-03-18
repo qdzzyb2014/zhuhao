@@ -4,7 +4,7 @@ from sqlalchemy import orm
 
 from fo import config
 
-from fo.extensions import db, login_manager, migrate
+from fo.extensions import db, login_manager, migrate, babel
 from admin import create_admin
 
 
@@ -29,6 +29,7 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
     migrate.init_app(app, db)
+    babel.init_app(app)
 
     admin = create_admin(app)
     from fo.views import blueprint

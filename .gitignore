@@ -2,7 +2,7 @@ venv/
 
 .idea
 
-__pycache__
+*/__pycache__
 *.pyc
 
 */locale_config.py

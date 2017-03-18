@@ -39,3 +39,13 @@
 .error {
     display: block;
 }
+
+.images {
+    background-color: #fcb42e;
+    width: 100vw;
+}
+
+.images img {
+    margin: auto;
+    width: 95vw;
+}

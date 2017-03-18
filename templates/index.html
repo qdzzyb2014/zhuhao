@@ -6,7 +6,8 @@
     <title>这个春糖,来糖烟酒周刊就够了!8大峰会,各领风骚</title>
     <link rel="stylesheet" href="/static/style/index.css?q=4sasds3ssdad780">
 </head>
-<body style="margin: 0;">
+<body style="margin: 0; background-color: #fcb42e">
+    {% block body %}
     <div class="header">
         <div class="title">
             <div class="text-header">这个春糖,来糖烟酒周刊就够了!8大峰会,各领风骚:<br></div>
@@ -15,6 +16,11 @@
             大咖荟萃: 正一堂杨光,智达天下张学军,商源朱跃明,陕酒男神王延安......</div>
         </div>
     </div>
+        <div class="flashes">
+            {% for message in get_flashed_messages() %}
+                <span>{{ message }}</span>
+            {% endfor %}
+        </div>
     <div class="footer">
         <div class="wrapper">
             <div class="form-title">千人免费论坛,火热抢座中!(填写资料报名, 拒绝空降!)</div>
@@ -57,4 +63,5 @@
         <img src="/static/images/WechatIMG6.jpeg" alt="">
         <img src="/static/images/WechatIMG7.jpeg" alt="">
     </div>
+    {% endblock %}
 </body>

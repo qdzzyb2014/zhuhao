@@ -4,15 +4,15 @@
 #    - { role: geerlingguy.git }
 #    - { role: geerlingguy.nginx }
 #    - { role: ANXS.postgresql }
-#  tasks:
-#    - name: update packages to latest version
-#      apt: upgrade=dist update_cache=yes
-#
-#    - name: install required apt packages
-#      apt: name={{ item }}
-#      with_items:
-#        - "{{ apt_packages }}"
-#
+  tasks:
+    - name: update packages to latest version
+      apt: upgrade=dist update_cache=yes
+
+    - name: install required apt packages
+      apt: name={{ item }}
+      with_items:
+        - "{{ apt_packages }}"
+
 #    - name: create running user
 #      user: name=zhuhao
 #

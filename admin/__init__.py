@@ -6,7 +6,7 @@ from fo.extensions import db
 
 def create_admin(app):
     admin = Admin(
-        app, url='/admin', template_mode='bootstrap3'
+        app, url='/never-guss', template_mode='bootstrap3'
     )
 
     admin.add_view(UserRegisterView(

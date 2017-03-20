@@ -14,6 +14,8 @@ class UserRegisterView(ModelView):
         'main_industry'
     ]
 
+    export_types = ['xlsx']
+
     column_labels = {
         'name': '姓名',
         'company': '公司名称',
